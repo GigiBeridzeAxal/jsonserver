@@ -6,7 +6,7 @@
   "scripts": {
     "Dev": "nodemon server.js",
     "start": "node server.js",
-    "json": "json-server -w database/db.json -p 3500"
+    "json": "json-server -w database/db.json"
   },
   "author": "",
   "license": "ISC",

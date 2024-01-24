@@ -1,17 +1,23 @@
 const express = require('express')
-const cors = require('cors')
-const app = express()
+const errorhandler = require('./middleware/errorhandler')
+const connectDB = require('./config/dbConnection')
+const dotenv = require('dotenv').config()
 
-app.use(cors({
-    origin: "http://localhost:3000"
-}))
+const port = process.env.PORT || 3000
+const app = express()
 app.use(express.json())
-const port = 500
+
+
+
+
+connectDB()
+
 
 app.use('/', require('./routes/root')  )
 
+app.use(errorhandler)
+
+app.listen(port, console.log(`Server Running On Port ${port}`))
 
 
-app.listen(port, () => {
-    console.log(`Server Running On Port ${port}`)
-})
+
